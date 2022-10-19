@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include <time.h>
+#include <omp.h>
 #include "../includes/utils.h"
 
 
@@ -67,10 +68,10 @@ void kmeans(){
 			float x = vector[i].x;
 			float y = vector[i].y;
 
-			float dist1 = (float) sqrt(pow((clusters[0].centroid.x - x), 2) + pow((clusters[0].centroid.y- y), 2));
+			float dist1 = (clusters[0].centroid.x - x) * (clusters[0].centroid.x - x) + (clusters[0].centroid.y- y) * (clusters[0].centroid.y- y);
 
 			for(int j= 1; j< K; j++){
-				float dist2 = (float) sqrt(pow((clusters[j].centroid.x- x), 2) + pow((clusters[j].centroid.y- y), 2));
+				float dist2 = (clusters[j].centroid.x- x) * (clusters[j].centroid.x- x) + (clusters[j].centroid.y- y) * (clusters[j].centroid.y- y);
 
 				if(dist2 < dist1){
 					dist1 = dist2;

@@ -10,7 +10,7 @@ OBJECT = $(patsubst %,$(BIN)/%, $(notdir $(SOURCE:.c=.o)))
 
 CC = gcc
 
-CFLAGS = -Wall -std=gnu99 -O2 -I$(INC)
+CFLAGS = -std=gnu99 -O2 -I$(INC)
 
 $(BIN)/$(TARGET) : $(OBJECT)
 		$(CC) -o $@ $^ -lm
