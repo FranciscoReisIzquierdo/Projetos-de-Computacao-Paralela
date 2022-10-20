@@ -10,10 +10,10 @@ OBJECT = $(patsubst %,$(BIN)/%, $(notdir $(SOURCE:.c=.o)))
 
 CC = gcc
 
-CFLAGS = -std=gnu99 -O2 -I$(INC)
+CFLAGS = -std=gnu99 -O2 -funroll-loops -ftree-vectorize -msse4 -I$(INC)
 
 $(BIN)/$(TARGET) : $(OBJECT)
-		$(CC) -o $@ $^ -lm
+		$(CC) -o $@ $^
 
 $(BIN)/%.o : $(SRC)/%.c
 		$(CC) $(CFLAGS) -c $< -o $@
