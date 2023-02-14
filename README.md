@@ -1,1 +1,1 @@
-# Projetos-de-CP
+# Projetos-de-Computação-Paralela
